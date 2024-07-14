@@ -5,7 +5,7 @@ on:
     branches:
       - develop
     paths:
-      - 'openapi.json' # path to your openapi file
+      - openapi.json # path to your openapi file
 
 permissions:
   contents: read
