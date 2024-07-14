@@ -29,6 +29,7 @@ export class UsersController {
   @ApiOkResponse({ type: UserDto, isArray: true })
   findAll(@Query() userPageQuery: UserPageQuery): UserDto[] {
     // @ts-expect-error - dummy logic
+    // placeholder comment for changes
     return this.usersService.findAll();
   }
 
