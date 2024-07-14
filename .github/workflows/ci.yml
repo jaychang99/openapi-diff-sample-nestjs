@@ -1,0 +1,52 @@
+name: Diff Openapi and Send Slack Message
+
+on:
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: read
+
+jobs:
+  diff-openapi-and-send-slack-message:
+    name: Diff Openapi and Send Slack Message
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # must fetch FETCH_HEAD~1 and at least two commits are needed.
+
+      - name: Send Openapi Diff to Slack
+        id: send-openapi-diff-to-slack
+        uses: jaychang99/github-actions-openapi-diff@v0.2.2-beta
+        with:
+          slack_enabled: true # whether to send slack message or not
+
+          # slack bots must have the following permissions: chat:write, and must previously join the slack channel
+          # slack channel id, must be provided if slack_enabled is true
+          slack_channel_id: ${{ secrets.SLACK_CHANNEL_ID }}
+          # slack access token, must be provided if slack_enabled is true
+          slack_access_token: ${{ secrets.SLACK_ACCESS_TOKEN }}
+
+          # language of the message sent to slack, defaults to en-us
+          locale: ko-kr
+
+          # member id list to mention in slack message, comma separated (no whitespace allowed)
+          # ex. U01A1B2C3,U01A1B2C4,U05A1D2C4 (Slack > Click on profile > More Menus (Dot Icon) > Copy member ID)
+          member_id_list_to_mention: ${{ secrets.MEMBER_ID_LIST_TO_MENTION }}
+
+          # openapi document url (optional) e.g. url to your swagger document.
+          api_documentation_url: ${{ secrets.API_DOCUMENTATION_URL }}
+
+          # openapi file path (optional)
+          # defaults to openapi.json (we assume openapi.json is in the root directory)
+          openapi_file_path: openapi.json
+
+          # Following options are needed to attach additional information to the slack message
+          # Do not modifiy the following options
+          head_commit_message: ${{ github.event.head_commit.message }}
+          head_commit_sha: ${{ github.sha }}
