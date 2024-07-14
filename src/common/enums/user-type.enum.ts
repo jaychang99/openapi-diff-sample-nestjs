@@ -3,4 +3,5 @@ export enum UserType {
   SHOP_OWNER = 'SHOP_OWNER',
   CUSTOMER = 'CUSTOMER',
   RIDER = 'RIDER',
+  DRIVER = 'DRIVER',
 }

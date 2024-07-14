@@ -100,7 +100,8 @@
                 "ADMIN",
                 "SHOP_OWNER",
                 "CUSTOMER",
-                "RIDER"
+                "RIDER",
+                "DRIVER"
               ],
               "type": "string"
             }
