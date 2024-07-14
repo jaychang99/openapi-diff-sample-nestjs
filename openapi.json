@@ -99,7 +99,8 @@
               "enum": [
                 "ADMIN",
                 "SHOP_OWNER",
-                "CUSTOMER"
+                "CUSTOMER",
+                "RIDER"
               ],
               "type": "string"
             }
