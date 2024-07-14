@@ -22,7 +22,7 @@ jobs:
 
       - name: Send Openapi Diff to Slack
         id: send-openapi-diff-to-slack
-        uses: jaychang99/github-actions-openapi-diff@v0.3.0-beta
+        uses: jaychang99/github-actions-openapi-diff@v0.3.1-beta
         with:
           slack_enabled: true # whether to send slack message or not
 
