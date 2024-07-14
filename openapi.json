@@ -115,7 +115,8 @@
               "enum": [
                 "ACTIVE",
                 "INACTIVE",
-                "DELETED"
+                "DELETED",
+                "SUSPENDED"
               ],
               "type": "string"
             }
@@ -332,12 +333,18 @@
             "type": "string",
             "description": "User email",
             "example": "johndoe@email.com"
+          },
+          "phone": {
+            "type": "string",
+            "description": "User phone number",
+            "example": "1234567890"
           }
         },
         "required": [
           "id",
           "name",
-          "email"
+          "email",
+          "phone"
         ]
       },
       "UpdateUserDto": {
